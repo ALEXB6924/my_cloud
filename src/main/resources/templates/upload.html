@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/styles/upload.css}"/>
+</head>
+<body>
+    <header>
+        <h2>My Cloud</h2>
+        <h3 id="usernameHeader">Current User: <span sec:authentication="name" id="username"></span></h3>
+        <form th:action="@{/logout}" method="post" id="logout">
+            <button type="submit" class="option">Logout</button>
+        </form>
+    </header>
+    <main>
+        <h3 id="menu">Upload</h3>
+        <div th:fragment="flash" th:if="${flash != null}">
+            <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}"></div>
+        </div>
+        <form th:action="@{/performUpload}" th:object="${file}" method="post" enctype="multipart/form-data" id="uploadForm">
+            <input type="file" id="file" name="multipartFile" class="option">
+            <input type="submit" value="Upload" class="option">
+        </form>
+        <form th:action="@{/deleteFiles}" method="post" th:style="(${files} == null ? 'display:none' : 'display:block')">
+            <div th:each="file : ${files}" name="checkbox">
+                <input type="checkbox" name="radio" th:text="${file.name}">
+                <a class="option" th:href="@{|/file/${file.id}|}"><button>Download</button></a>
+            </div>
+            <input id="deleteSelected" type="submit" value="Delete selected files">
+        </form><br>
+    </main>
+    <script th:src="@{/scripts/upload.js}"></script>
+</body>
+</html>

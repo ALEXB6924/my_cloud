@@ -1,0 +1,11 @@
+package com.alex.cloud.dao;
+
+
+import com.alex.cloud.model.User;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserDao extends CrudRepository<User,Long> {
+    User findByUsername(String username);
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link rel="stylesheet" th:href="@{/styles/login.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script th:src="@{/scripts/login.js}"></script>
+    <title>MyCloud</title>
+</head>
+<body>
+<div>
+    <header>
+        <h2>My Cloud</h2>
+    </header>
+    <main>
+        <div th:fragment="flash" th:if="${flash != null}">
+            <div th:classappend="${#strings.toLowerCase(flash.status)}" th:text="${flash.message}"></div>
+        </div>
+        <form th:action="@{/login}" th:object="${user}" method="post" id="login">
+            <label><h3>Log in please.</h3></label>
+            <label>Enter username and password:</label><br><br>
+            <input type="text" id="username" th:field="*{username}"/><br/><br/>
+            <input type="password" id="passwd" th:field="*{password}"/><br/><br/>
+            <button type="submit" id="submit" class="btn">Log In</button>
+        </form><br>
+
+        <div>
+            <img th:src="@{/styles/desktop-computer.svg}" height="300px" width="350px" id="welcomeImg">
+        </div>
+    </main>
+</div>
+</body>
+</html>

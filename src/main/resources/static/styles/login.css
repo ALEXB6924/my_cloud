@@ -1,0 +1,44 @@
+body{
+    text-align: center;
+    background-color: #bfbfbf;
+    margin: 0;
+
+}
+
+header{
+    background-color: burlywood;
+    border-style: groove;
+    margin-bottom:150px;
+    padding: 10px 0 10px 0;
+}
+
+h2{
+    text-align: left;
+    font-size: 50px;
+    color: #734d26;
+    margin: 0 0 0 15%;
+}
+
+#login{
+    background-color: burlywood;
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border-style: outset;
+}
+
+#submit:hover{
+    transition: all .5s;
+    transform: scale(3) rotate(360deg);
+}
+
+#welcomeImg{
+    margin-top: 50px;
+    border-radius: 50%;
+    border: 5px groove;
+    border-top-color: brown;
+    border-bottom-color: #734d26;
+    border-left-color: brown;
+
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/home.css}"/>
+</head>
+<body>
+    <header>
+        <h2>My Cloud</h2>
+        <h3 id="usernameHeader">Current User: <span sec:authentication="name" id="username"></span></h3>
+        <form th:action="@{/logout}" method="post" id="logout">
+            <button type="submit" class="option">Logout</button>
+        </form>
+    </header>
+    <main>
+        <h1>What would you like to do?</h1><br>
+        <a class="option" th:href="@{/upload}"><button>View my files</button></a>
+        <a class="option" th:href="@{/sendFile}"><button>Send a file</button></a>
+    </main>
+</body>
+</html>
