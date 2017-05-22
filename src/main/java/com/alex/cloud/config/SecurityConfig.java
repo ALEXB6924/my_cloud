@@ -58,13 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .logout()
                 .permitAll()
-                .logoutSuccessUrl("/login")
-                .and()
-            .csrf()
-                .and()
-            .sessionManagement()
-                .sessionFixation()
-                .newSession();
+                .logoutSuccessUrl("/login");
     }
 
     private AuthenticationSuccessHandler loginSuccessHandler() {

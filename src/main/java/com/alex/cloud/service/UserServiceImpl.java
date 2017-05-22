@@ -8,6 +8,8 @@ import com.alex.cloud.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,12 +28,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(String username, String password, String role, boolean enabled) {
 
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         if (role.toLowerCase().equals("admin")){
 
-            userDao.save(new User(username, password, enabled, roleDao.findByName(ADMIN)));
+            userDao.save(new User(username, passwordEncoder.encode(password), enabled, roleDao.findByName(ADMIN)));
         }
         else {
-            userDao.save(new User(username, password, enabled, roleDao.findByName(USER)));
+            userDao.save(new User(username, passwordEncoder.encode(password), enabled, roleDao.findByName(USER)));
         }
     }
 
