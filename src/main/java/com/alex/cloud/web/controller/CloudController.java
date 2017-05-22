@@ -3,7 +3,8 @@ package com.alex.cloud.web.controller;
 import com.alex.cloud.model.File;
 import com.alex.cloud.model.User;
 import com.alex.cloud.service.FileService;
-import com.alex.cloud.web.helper.DBInitializer;
+import com.alex.cloud.service.RoleService;
+import com.alex.cloud.service.UserService;
 import com.alex.cloud.web.helper.FlashMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,21 +33,25 @@ public class CloudController {
     @Autowired
     private FileService fileService;
     @Autowired
-    private DBInitializer dbInitializer;
+    private UserService userService;
+    @Autowired
+    private RoleService roleService;
+//    @Autowired
+//    private DBInitializer dbInitializer;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, HttpServletRequest httpServletRequest){
-        dbInitializer.fillTables();
+//        dbInitializer.fillTables();
+//        roleService.save("admin");
+//        roleService.save("user");
+//
+//        userService.save("admin", "admin", "admin", true);
+//        userService.save("user", "user", "user", true);
+
         model.addAttribute("user", new User());
-        try {
-            Object flash = httpServletRequest.getSession().getAttribute("flash");
-            model.addAttribute("flash", flash);
-
-            httpServletRequest.getSession().removeAttribute("flash");
-        }
-        catch (Exception e){
-
-        }
+        Object flash = httpServletRequest.getSession().getAttribute("flash");
+        model.addAttribute("flash", flash);
+        httpServletRequest.getSession().removeAttribute("flash");
         return "login";
     }
 

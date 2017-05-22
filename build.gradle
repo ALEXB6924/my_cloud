@@ -13,11 +13,6 @@ apply plugin: 'spring-boot'
 apply plugin: 'java'
 apply plugin: 'idea'
 
-jar {
-    baseName = 'myCloud'
-    version ='1.0'
-}
-
 repositories {
     mavenCentral()
 }
@@ -33,9 +28,9 @@ dependencies {
     compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE'
 
     runtime 'net.sourceforge.nekohtml:nekohtml:1.9.21'
-//    runtime 'com.h2database:h2:1.4.192'
+    runtime 'mysql:mysql-connector-java'
     runtime 'javax.transaction:jta:1.1'
-//    runtime 'org.aspectj:aspectjweaver:1.8.7'
+    runtime 'org.aspectj:aspectjweaver:1.8.7'
 
 //    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
